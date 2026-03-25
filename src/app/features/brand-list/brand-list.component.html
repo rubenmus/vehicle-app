@@ -1,0 +1,30 @@
+<div class="container">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Buscar marca...</mat-label>
+    <input matInput [formControl]="searchControl" placeholder="Ej: Toyota, Honda...">
+  </mat-form-field>
+
+  @if (store.isLoadingBrands()) {
+    <div class="spinner-container">
+      <mat-spinner></mat-spinner>
+      <p>Cargando...</p>
+    </div>
+  }
+
+  @if (filteredBrands().length > 0 && !store.isLoadingBrands()) {
+  <cdk-virtual-scroll-viewport itemSize="80" class="viewport">
+    <div *cdkVirtualFor="let brand of filteredBrands()" class="brand-item">
+      <mat-card class="brand-card" [routerLink]="['/brand', brand.Make_ID]">
+        <mat-card-content>
+          <span class="brand-name">{{ brand.Make_Name }}</span>
+          <span class="brand-id">ID: {{ brand.Make_ID }}</span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </cdk-virtual-scroll-viewport>
+  }
+
+  @if (filteredBrands().length === 0 && !store.isLoadingBrands()) {
+    <p>No tenemos esa marca en nuestro catálogo.</p>
+  }
+</div>

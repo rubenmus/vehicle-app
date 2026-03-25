@@ -1,0 +1,53 @@
+.container {
+  padding: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.header-card {
+  margin: 20px 0;
+  background-color: #fafafa;
+  border: 2px solid rgb(34, 46, 224);
+
+  ::ng-deep .mat-mdc-card-header {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+mat-list-item {
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
+  margin-bottom: 4px;
+
+  &:hover {
+    background-color: rgba(49, 62, 241, 0.452) !important;
+
+    mat-icon {
+      color: rgb(34, 46, 224);
+    }
+  }
+}
+
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px;
+  color: white;
+}
+
+
+.scroll-container {
+  height: calc(100vh - 320px);
+  margin-bottom: 40px;
+  overflow-y: auto;
+  padding-right: 10px;
+
+  &::-webkit-scrollbar { width: 8px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background: rgb(34, 46, 224);
+    border-radius: 4px;
+  }
+}

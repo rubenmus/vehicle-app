@@ -1,0 +1,48 @@
+<div class="container">
+  <button mat-button routerLink="/">
+    <mat-icon>arrow_back</mat-icon> Volver
+  </button>
+
+  <mat-card class="header-card">
+    <mat-card-header>
+      <mat-card-title>{{ brandName() }}</mat-card-title>
+      <mat-card-subtitle>ID de la Marca: {{ id() }}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+
+  @if (store.isLoadingDetails()) {
+    <div class="spinner-container">
+      <mat-spinner></mat-spinner>
+      <p>Cargando...</p>
+    </div>
+  } @else {
+    <mat-tab-group>
+      <mat-tab label="TIPOS DE VEHÍCULOS">
+        <div class="scroll-container">
+          <mat-list>
+            @for (type of vehicle(); track type.VehicleTypeId) {
+              <mat-list-item>
+                <mat-icon matListItemIcon>directions_car</mat-icon>
+                <div matListItemTitle>Nombre del Vehiculo: {{ type.VehicleTypeName }}</div>
+                <div matListItemLine>ID del Vehiculo: {{ type.VehicleTypeId }}</div>
+              </mat-list-item>
+            }
+          </mat-list>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="MODELOS DISPONIBLES">
+        <div class="scroll-container">
+          <mat-list>
+            @for (model of models(); track model.Model_ID) {
+              <mat-list-item>
+                <div matListItemTitle>Nombre del Modelo:{{ model.Model_Name }}</div>
+                <div matListItemLine>Código de Modelo: {{ model.Model_ID }}</div>
+              </mat-list-item>
+            }
+          </mat-list>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  }
+</div>
