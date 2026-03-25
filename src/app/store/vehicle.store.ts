@@ -33,7 +33,6 @@ export const VehicleStore = signalStore(
       pipe(
         tap(() => {
           if (store.brands().length > 0) {
-            console.log('Ya tenemos datos de las marcas.');
             return;
           }
           patchState(store, { isLoadingBrands: true, error: null });
@@ -74,7 +73,7 @@ export const VehicleStore = signalStore(
 
           vehicleService.getModelsByBrandId(brandId).subscribe({
             next: (models) => patchState(store, (state) => ({ modelsCache: { ...state.modelsCache, [brandId]: models }, isLoadingDetails: false })),
-            error: () => patchState(store, { error: 'Error cargando detalles', isLoadingDetails: false })
+            error: () => patchState(store, { error: 'Error al cargar los detalles de la marca', isLoadingDetails: false })
           });
 
           return [];

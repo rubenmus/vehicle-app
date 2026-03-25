@@ -41,7 +41,7 @@ describe('BrandListComponent', () => {
 
   it('Filtramos las marcas', fakeAsync(() => {
     component.searchControl.setValue('tesla');
-    tick(300);
+    tick(300); //Para el debounceTime
     expect(component.filteredBrands().length).toBe(1);
     expect(component.filteredBrands()[0].Make_Name).toBe('Tesla');
   }));

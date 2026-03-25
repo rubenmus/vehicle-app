@@ -35,7 +35,7 @@ export class BrandDetailComponent implements OnInit {
 
   brandName = computed(() => {
     const brand = this.store.brands().find(b => b.Make_ID === Number(this.id()));
-    return brand ? brand.Make_Name : 'Sin Nombre de Marca';
+    return brand ? brand.Make_Name : 'Sin nombre de Marca';
   });
 
   ngOnInit() {
